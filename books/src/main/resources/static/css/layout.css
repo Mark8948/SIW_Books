@@ -1,0 +1,93 @@
+/* File: layout.css */
+/* Layout generale: nav, header, main, footer */
+
+/* NAVBAR */
+nav {
+  position: sticky;
+  top: 0;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  z-index: 100;
+}
+
+/* CONTAINER AUTENTICAZIONE */
+.auth-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #1b1b1b;
+}
+
+.nav-links li a {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.nav-links li a:hover {
+  background: #f0f4f8;
+}
+
+/* HEADER / HERO – versione blu scuro */
+header {
+  text-align: center;
+  padding: 4rem 1rem;
+  background: #0b1f3b; /* blu scuro uniforme */
+  /* oppure, gradient leggero:
+     background: linear-gradient(135deg, #0b1f3b 0%, #162e58 100%);
+  */
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+}
+
+header h1 {
+  font-size: 3rem;
+  color: #ffffff;
+}
+
+header p {
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.85);
+  max-width: 600px;
+  margin: 0.5rem auto;
+}
+
+/* SEZIONI */
+.section {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+}
+
+.section h2 {
+  font-size: 2rem;
+  color: #1b1b1b;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* FOOTER */
+footer {
+  background: #1b1b1b;
+  color: #aaa;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+footer p {
+  font-size: 0.9rem;
+}

@@ -2,60 +2,68 @@
 <html lang="it" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/images/icon.ico">
     <title>Autori</title>
-    <link rel="stylesheet" th:href="@{/css/autori.css}">
     <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/autori-style.css}">
 </head>
 <body>
 
-<!-- Navbar pubblica -->
-<div th:replace="~{fragments/navbar :: navbar}"></div>
+  <!-- Navbar -->
+  <header th:replace="~{fragments/navbar :: navbar}"></header>
 
-<h1>Autori</h1>
+  <main class="page-container">
 
-<form class="search-bar" th:action="@{/autori/ricerca}" method="get">
-    <input type="text" name="nome" placeholder="Cerca autore per nome o cognome..." />
-    <button type="submit">Cerca</button>
-</form>
-<div class="ordina-bar">
-    <a th:href="@{/autori/ordina/nome(nome='')}" class="ordina-btn">Ordina per Nome</a>
-    <a th:href="@{/autori/ordina/anno(nome='')}" class="ordina-btn">Ordina per Anno di nascita</a>
-    <a th:href="@{/autori/ordina/voto(nome='')}" class="ordina-btn">Ordina per Media voti</a>
-</div>
-<h1 th:if="${#lists.isEmpty(autori)}">
-    Nessun autore trovato.
-    </h1>
+    <!-- Titolo -->
+    <section class="page-header">
+      <h1>Autori</h1>
+    </section>
 
-<div class="container">
-    <div class="card" th:each="autore : ${autori}">
-        
+    <!-- Barra strumenti -->
+    <section class="tools-bar">
+      <form class="search-bar" th:action="@{/autori/ricerca}" method="get">
+        <input type="text" name="nome" placeholder="Cerca autore per nome o cognome..." />
+        <button type="submit">Cerca</button>
+      </form>
+      <nav class="ordina-bar" aria-label="Ordina autori">
+        <a th:href="@{/autori/ordina/nome(nome='')}" class="ordina-btn">Nome</a>
+        <a th:href="@{/autori/ordina/anno(nome='')}" class="ordina-btn">Anno</a>
+        <a th:href="@{/autori/ordina/voto(nome='')}" class="ordina-btn">Media voti</a>
+      </nav>
+    </section>
+
+    <!-- Nessun risultato -->
+    <section th:if="${#lists.isEmpty(autori)}" class="no-results">
+      <h2>Nessun autore trovato.</h2>
+    </section>
+
+    <!-- Griglia Autori -->
+    <section class="grid-autori">
+      <article class="card-autore" th:each="autore : ${autori}">
         <a th:href="@{'/autori/' + ${autore.id}}">
-            <img th:if="${autore.fotografia != null}" 
-     th:src="@{${autore.fotografia.path}}" 
-     th:alt="|Foto di ${autore.nome} ${autore.cognome}|" />
+          <img th:if="${autore.fotografia != null}"
+               th:src="@{${autore.fotografia.path}}"
+               th:alt="|Foto di ${autore.nome} ${autore.cognome}|"/>
         </a>
-        
-
-       <div class="info">
-            <h2 th:text="${autore.nome + ' ' + autore.cognome}">Nome Cognome</h2>
-
-            <p th:if="${autore.dataNascita != null}">
-                <strong>Nascita:</strong> 
-                <span th:text="${#temporals.format(autore.dataNascita, 'dd/MM/yyyy')}">--</span>
-
-            </p>
-            <p th:if="${autore.dataMorte != null}">
-    <strong>Morte:</strong> 
-    <span th:text="${#temporals.format(autore.dataMorte, 'dd/MM/yyyy')}">--</span>
-</p>
-            <p th:if="${autore.nazionalita != null && autore.nazionalita != ''}">
-                <strong>Nazionalità:</strong> 
-                <span th:text="${autore.nazionalita}">--</span>
-            </p>
+        <div class="info">
+          <h2 th:text="${autore.nome + ' ' + autore.cognome}">Nome Cognome</h2>
+          <p th:if="${autore.dataNascita != null}">
+            <strong>Nascita:</strong>
+            <span th:text="${#temporals.format(autore.dataNascita, 'dd/MM/yyyy')}">--</span>
+          </p>
+          <p th:if="${autore.dataMorte != null}">
+            <strong>Morte:</strong>
+            <span th:text="${#temporals.format(autore.dataMorte, 'dd/MM/yyyy')}">--</span>
+          </p>
+          <p th:if="${autore.nazionalita}">
+            <strong>Nazionalità:</strong>
+            <span th:text="${autore.nazionalita}">--</span>
+          </p>
         </div>
-    </div>
-</div>
+      </article>
+    </section>
+
+  </main>
 
 </body>
 </html>
