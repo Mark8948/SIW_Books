@@ -1,5 +1,3 @@
-/* dettaglioLibro.css */
-
 /* Background generale */
 body.bg-soft-gray {
     background: #f5f7fa;
@@ -9,7 +7,7 @@ body.bg-soft-gray {
     padding: 0;
 }
 
-/* Wrapper a flex per due colonne */
+/* Layout a due colonne */
 .detail-wrapper {
     display: flex;
     max-width: 1200px;
@@ -26,6 +24,7 @@ body.bg-soft-gray {
     width: 100%;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    object-fit: cover;
 }
 .gallery {
     display: grid;
@@ -36,6 +35,7 @@ body.bg-soft-gray {
 .gallery img {
     width: 100%;
     border-radius: 4px;
+    object-fit: cover;
 }
 
 /* Colonna destra */
@@ -49,7 +49,8 @@ body.bg-soft-gray {
 /* Header libro */
 .book-header h1 {
     margin: 0;
-    font-size: 2rem;
+    font-size: 2.5rem;
+    line-height: 1.2;
 }
 .rating {
     display: flex;
@@ -58,7 +59,7 @@ body.bg-soft-gray {
     margin: 0.5rem 0;
 }
 .star {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 .star.full {
     color: #e3b23c;
@@ -66,8 +67,12 @@ body.bg-soft-gray {
 .star.empty {
     color: #ccc;
 }
+.book-header p {
+    margin: 0.5rem 0 0;
+    font-size: 1rem;
+}
 
-/* Tabs */
+/* Tab navigation */
 .tabs {
     display: flex;
     border-bottom: 2px solid #ddd;
@@ -79,10 +84,15 @@ body.bg-soft-gray {
     padding: 0.5rem 1rem;
     cursor: pointer;
     font-size: 1rem;
+    transition: color 0.2s;
+}
+.tab-btn:hover {
+    color: #0077cc;
 }
 .tab-btn.active {
     border-bottom: 3px solid #0077cc;
     font-weight: bold;
+    color: #0077cc;
 }
 
 /* Contenuti tab */
@@ -114,6 +124,15 @@ body.bg-soft-gray {
     object-fit: cover;
     margin-bottom: 0.5rem;
 }
+.author-card h3 {
+    margin: 0.5rem 0 0.25rem;
+    font-size: 1.1rem;
+}
+.author-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+}
 
 /* Recensioni */
 .reviews-list {
@@ -126,4 +145,50 @@ body.bg-soft-gray {
     border-radius: 8px;
     padding: 1rem;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.review-card h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.2rem;
+}
+.review-card p {
+    margin: 0.25rem 0;
+    font-size: 0.95rem;
+}
+
+/* Form recensione (solo per utente registrato) */
+.recensione-form {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-top: 1.5rem;
+}
+.recensione-form .form-group {
+    margin-bottom: 1rem;
+}
+.recensione-form label {
+    display: block;
+    margin-bottom: 0.25rem;
+}
+.recensione-form input,
+.recensione-form textarea,
+.recensione-form select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Pulsante invio */
+.btn {
+    background: #0077cc;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.btn:hover {
+    background: #005fa3;
 }

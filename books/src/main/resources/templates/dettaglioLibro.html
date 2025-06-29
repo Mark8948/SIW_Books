@@ -17,7 +17,7 @@
         <!-- Colonna sinistra: copertina principale + galleria -->
         <aside class="left-col">
             <div class="cover-main">
-                <img th:src="${copertina}" alt="Copertina principale" />
+                <img th:src="@{${copertina}}" alt="Copertina principale" />
             </div>
             <h2>Galleria</h2>
             <div class="gallery">
@@ -76,7 +76,7 @@
             <!-- Tab: Recensioni -->
             <div id="recensioni" class="tab-content">
                 <div th:if="${#lists.isEmpty(recensioni)}">
-                    <em>Ancora nessuna recensione, accedi per postarne una!</em>
+                    <em>Ancora nessuna recensione</em>
                 </div>
                 <div class="reviews-list" th:each="rec : ${recensioni}" th:unless="${#lists.isEmpty(recensioni)}">
                     <div class="review-card">
@@ -91,11 +91,7 @@
                         </p>
                         <p>
                             <strong>Autore:</strong>
-                            <span th:if="${rec.autore != null}"
-                                  th:text="${rec.autore.nome + ' ' + rec.autore.cognome}">
-                                Utente anonimo
-                            </span>
-                            <em th:if="${rec.autore == null}">Utente anonimo</em>
+                            <em>Utente anonimo</em>
                         </p>
                         <p th:text="${rec.testo}">Testo recensione</p>
                     </div>
