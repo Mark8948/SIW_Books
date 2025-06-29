@@ -1,7 +1,6 @@
-/* dettaglioAutore.css */
-
 /* Reset e base */
-body {
+body,
+body.bg-soft-gray {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #f4f7fa;
   color: #333;
@@ -16,7 +15,7 @@ body {
   padding: 2rem 1rem;
 }
 
-/* Card autore */
+/* Card Autore */
 .autore-card {
   display: flex;
   flex-wrap: wrap;
@@ -28,32 +27,28 @@ body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   margin-bottom: 2rem;
 }
-
 .autore-card .foto img {
   width: 220px;
   height: 300px;
   object-fit: cover;
   border-radius: 8px;
 }
-
-/* Informazioni autore */
 .autore-card .info {
   flex: 1;
   min-width: 240px;
 }
-
 .autore-card h1 {
   margin: 0 0 0.5rem;
   font-size: 1.8rem;
   color: #1a237e;
 }
-
 .autore-card p {
   margin: 0.4rem 0;
   font-size: 0.95rem;
   color: #424242;
 }
 
+/* Stelle media voti */
 .stelle {
   margin: 0.8rem 0;
   font-size: 1.1rem;
@@ -66,7 +61,37 @@ body {
   color: #cfd8dc;
 }
 
-/* Sezione libri */
+/* Bottoni azioni (solo admin) */
+.bottoni-autori {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+.btn-danger,
+.btn-edit {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-decoration: none;
+  text-align: center;
+}
+.btn-danger {
+  background: #e53935;
+}
+.btn-danger:hover {
+  background: #c62828;
+}
+.btn-edit {
+  background: #ffa000;
+}
+.btn-edit:hover {
+  background: #ff8f00;
+}
+
+/* Sezione “Libri scritti” */
 .libri-scritti h2 {
   margin-bottom: 1rem;
   color: #1a237e;
@@ -79,9 +104,10 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
-/* Card libro */
+/* Card Libro */
 .card-libro {
   background: #fff;
   border-radius: 10px;
@@ -110,6 +136,7 @@ body {
 .card-libro .anno {
   font-size: 0.85rem;
   color: #5c6bc0;
+  margin-bottom: 0.5rem;
 }
 .card-libro .autori {
   font-size: 0.85rem;

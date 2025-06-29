@@ -2,44 +2,56 @@
 
 /* Reset e base */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #f4f7fa;
   color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
 }
 
-/* Titolo pagina */
-h1 {
-  text-align: center;
-  margin: 2rem 0 1rem;
+/* Page header */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 2rem auto 1rem;
+  padding: 0 1rem;
+}
+.page-header h1 {
   color: #1a237e;
   font-size: 2rem;
   letter-spacing: 0.5px;
+  margin: 0;
+}
+.btn-add {
+  display: inline-block;
+  background: #4caf50;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+.btn-add:hover {
+  background: #388e3c;
 }
 
-/* Container principale */
-.page-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
-}
-
-/* Barra strumenti: ricerca + ordinamento */
+/* Tools bar */
 .tools-bar {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
   gap: 1rem;
-  margin-bottom: 2rem;
+  max-width: 1200px;
+  margin: 0 auto 1.5rem;
+  padding: 0 1rem;
 }
-
-/* Search Bar */
 .search-bar {
   display: flex;
 }
-.search-bar input[type="text"] {
+.search-bar input {
   width: 280px;
   padding: 0.6rem 1rem;
   border: 2px solid #cbd5e1;
@@ -48,7 +60,7 @@ h1 {
   outline: none;
   transition: border-color 0.2s ease;
 }
-.search-bar input[type="text"]:focus {
+.search-bar input:focus {
   border-color: #3f51b5;
 }
 .search-bar button {
@@ -63,21 +75,18 @@ h1 {
 .search-bar button:hover {
   background: #303f9f;
 }
-
-/* Ordina Bar */
-.tools-bar .ordina-bar {
+.ordina-bar {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
-.tools-bar .ordina-bar::before {
+.ordina-bar::before {
   content: "Ordina autori:";
   font-weight: 600;
   color: #1a237e;
   margin-right: 0.75rem;
-  white-space: nowrap;
 }
-.tools-bar .ordina-bar .ordina-btn {
+.ordina-btn {
   padding: 0.4rem 0.8rem;
   background: #e8eaf6;
   color: #1a237e;
@@ -85,19 +94,10 @@ h1 {
   text-decoration: none;
   font-size: 0.9rem;
   transition: background 0.2s ease, transform 0.1s ease;
-  box-shadow: none;
 }
-.tools-bar .ordina-bar .ordina-btn:hover {
+.ordina-btn:hover {
   background: #c5cae9;
   transform: translateY(-1px);
-}
-
-/* Messaggio “Nessun autore” */
-.no-results h2 {
-  text-align: center;
-  color: #b91c1c;
-  font-size: 1.2rem;
-  margin-top: 2rem;
 }
 
 /* Griglia autore */
@@ -105,10 +105,10 @@ h1 {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 1.5rem;
-  padding-bottom: 2rem;
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+  padding: 0 1rem;
 }
-
-/* Card Autore */
 .card-autore {
   background: #fff;
   border-radius: 12px;
@@ -138,4 +138,60 @@ h1 {
   font-size: 0.9rem;
   margin: 0.3rem 0;
   color: #424242;
+}
+
+/* Bottoni azioni */
+.bottoni-autori {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+.btn-danger,
+.btn-edit {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 0.9rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-danger {
+  background: #e53935;
+}
+.btn-danger:hover {
+  background: #c62828;
+}
+.btn-edit {
+  background: #ffa000;
+}
+.btn-edit:hover {
+  background: #ff8f00;
+}
+
+/* No-results */
+.no-results h2 {
+  text-align: center;
+  color: #b91c1c;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
+
+/* Bottone aggiungi autore */
+.contenitore-add {
+  text-align: center;
+  margin-top: 2rem;
+}
+.btn-add {
+  display: inline-block;
+  padding: 0.6rem 1.4rem;
+  background: #4caf50;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+.btn-add:hover {
+  background: #388e3c;
 }
