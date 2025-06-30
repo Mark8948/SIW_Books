@@ -2,57 +2,78 @@
 <html lang="it" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/images/icon.ico">
     <title>Libri</title>
-    <link rel="stylesheet" th:href="@{/css/libri.css}">
+    <link rel="stylesheet" th:href="@{/css/layout.css}">
     <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/libri-style.css}">
 </head>
 <body>
 
-<div th:replace="~{fragments/navbar :: navbar}"></div>
+    <!-- Navbar -->
+    <header th:replace="~{fragments/navbar :: navbar}"></header>
 
-<h1>Libri</h1>
+    <main class="page-container">
 
+        <!-- Intestazione con titolo -->
+        <section class="page-header">
+            <h1>Libri</h1>
+        </section>
 
-     <form class="search-bar" th:action="@{/libri/ricerca}" method="get">
-        
-    <input type="text" name="titolo" placeholder="Cerca per titolo..." />
-    <button type="submit">Cerca</button>
-    </form>
-<div class="ordina-bar">
-    <a th:href="@{/libri/ordina/titolo(titolo='')}" class="ordina-btn">Ordina per Titolo</a>
-    <a th:href="@{/libri/ordina/anno(titolo='')}" class="ordina-btn">Ordina per Anno di pubblicazione</a>
-    <a th:href="@{/libri/ordina/voti(titolo='')}" class="ordina-btn">Ordina per Media voti</a>
-</div>
+        <!-- Barra strumenti: ricerca + ordinamento -->
+        <section class="tools-bar">
+            <form class="search-bar" th:action="@{/libri/ricerca}" method="get">
+                <input type="text" name="titolo" placeholder="Cerca per titolo..." />
+                <button type="submit">Cerca</button>
+            </form>
+            <nav class="ordina-bar" aria-label="Ordina libri">
+                <a th:href="@{/libri/ordina/titolo(titolo='')}" class="ordina-btn">Titolo</a>
+                <a th:href="@{/libri/ordina/anno(titolo='')}" class="ordina-btn">Anno</a>
+                <a th:href="@{/libri/ordina/voti(titolo='')}" class="ordina-btn">Media voti</a>
+            </nav>
+        </section>
 
-    <h1 th:if="${#lists.isEmpty(libri)}" >
-    Nessun libro trovato.
-    </h1>
-<div class="container"></div>
-<div class="grid-libri" >
-        <div class="card-libro" th:each="libro : ${libri}">
-            <a th:href="@{'/libri/' + ${libro.id}}">
-                <img th:if="${copertine.size() > libroStat.index}"
-     th:src="@{${copertine[libroStat.index]}}"
-     th:alt="|Copertina di ${libro.titolo}|" />
+        <!-- Messaggio “Nessun libro” -->
+        <section th:if="${#lists.isEmpty(libri)}" class="no-results">
+            <h2>Nessun libro trovato.</h2>
+        </section>
 
+        <!-- Griglia di libri -->
+        <section class="grid-libri">
+            <article class="card-libro" th:each="libro, libroStat : ${libri}">
+                <a th:href="@{'/libri/' + ${libro.id}}">
+                    <img th:if="${copertine.size() > libroStat.index}"
+                         th:src="@{${copertine[libroStat.index]}}"
+                         th:alt="|Copertina di ${libro.titolo}|"/>
+                </a>
+                <div class="content">
+                    <h3 th:text="${libro.titolo}">Titolo Libro</h3>
+                    <p class="anno">
+                        <strong>Anno:</strong>
+                        <span th:text="${libro.annoPubblicazione}">2023</span>
+                    </p>
+					<div class="autori">
+					  <span th:if="${#lists.isEmpty(libro.autori)}">Nessun autore</span>
 
-            </a>
-            <div class="content">
-                <h2 th:text="${libro.titolo}">Titolo Libro</h2>
-                <p class="anno"><strong>Anno:</strong> <span th:text="${libro.annoPubblicazione}">2023</span></p>
-                <div class="autori">
-    <span th:if="${#lists.isEmpty(libro.autori)}">Nessun autore</span>
+					  <span th:if="${#lists.size(libro.autori) == 1}">
+					    <strong>Autore:</strong>
+					  </span>
+					  <span th:if="${#lists.size(libro.autori) > 1}">
+					    <strong>Autori:</strong>
+					  </span>
 
-    <span th:if="${#lists.size(libro.autori) == 1}"><strong>Autore:</strong> </span>
-    <span th:if="${#lists.size(libro.autori) > 1}"><strong>Autori: </strong></span>
+					  <span th:each="a, stat : ${libro.autori}"
+					        th:text="${a.nome + ' ' + a.cognome + (stat.last ? '' : ', ')}">
+					    Autore
+					  </span>
+					</div>
+                </div>
+            </article>
+        </section>
 
-    <span th:each="a : ${libro.autori}"
-          th:text="${a.nome + ' ' + a.cognome + ' - '}"><strong>Autore</strong></span>
-</div>
-            </div>
-        </div>
-    </div>
+    </main>
+
+    
 
 </body>
 </html>

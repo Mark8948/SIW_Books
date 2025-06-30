@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html lang="it" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Errore</title>
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    <link rel="stylesheet" th:href="@{/css/error.css}">
-    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Errore</title>
+  <link rel="icon" type="image/x-icon" href="/images/icon.ico">
+  <link rel="stylesheet" th:href="@{/css/error.css}">
+  <link rel="stylesheet" th:href="@{/css/navbar.css}">
 </head>
 <body>
 
-<!-- Navbar -->
-<div th:replace="~{fragments/navbar :: navbar}"></div>
+  <!-- Navbar -->
+  <div th:replace="~{fragments/navbar :: navbar}"></div>
 
-<main class="main-content">
-    <h1 th:text="'Errore ' + ${status} + ': ' + ${error}">Errore</h1>
-    
-    <a href="/" class="btn-home">Torna alla Home</a>
-</main>
+  <main class="main-content">
+    <h1>
+      <span>Errore</span>
+      <small th:text="${status} != null ? ' ' + ${status} : ''"></small>
+    </h1>
+    <p class="description" th:text="${errorMessage} ?: 'Si è verificato un problema imprevisto. Riprova più tardi o torna alla home.'">
+      Messaggio di errore descrittivo qui.
+    </p>
+    <a href="/" class="btn-home">← Torna alla Home</a>
+  </main>
 
 </body>
 </html>

@@ -1,0 +1,74 @@
+/* -- File: components.css -- */
+/* css/components.css */
+/* Griglia, card, pulsanti, e dettagli */
+
+/* BOTTONE GENERICO */
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: #ff6a95;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: background 0.2s;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+.btn:hover {
+  background: #e55d84;
+}
+
+
+.grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+/* CARD */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+}
+.card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+/* INFO CARD */
+.card .info {
+  padding: 1.25rem;
+}
+.card .info h3 {
+  font-size: 1.15rem;
+  color: #2c2c2c;
+}
+.card .info p {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+/* BOTTONE DETTAGLI */
+.card .btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: #ff6a95;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: background 0.2s;
+  text-align: center;
+}
+.card .btn:hover {
+  background: #e55d84;
+}

@@ -5,34 +5,69 @@
     <title>Area Amministratore</title>
     <link rel="stylesheet" th:href="@{/css/auth.css}">
     <link rel="stylesheet" th:href="@{/css/navbar.css}">
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/images/icon.ico">
 </head>
-<body>
+<body class="admin-bg">
 
-<header class="header">
-    <div th:replace="~{fragments/navbarAmministratori:: navbar}"></div>
-</header>
+    <!-- Header fisso con navbar dedicata -->
+    <header class="admin-header">
+        <div th:replace="~{fragments/navbarAmministratori::navbar}"></div>
+    </header>
 
-<main class="main-content">
-    <h1>Benvenuto Admin <span th:text="${utente.nome}">Nome</span>!</h1>
+    <!-- Contenuto principale centrato -->
+    <main class="admin-container">
 
-    <section class="user-info">
-        <h2>Le tue informazioni</h2>
-        <ul>
-            <li><strong>ID:</strong> <span th:text="${utente.id}">ID</span></li>
-            <li><strong>Nome:</strong> <span th:text="${utente.nome}">Nome</span></li>
-            <li><strong>Cognome:</strong> <span th:text="${utente.cognome}">Cognome</span></li>
-            
-        </ul>
-        <form class="logout-form" th:action="@{/logout}" method="post">
-    <button type="submit" class="logout-button">Esci</button>
-</form>
-    
-</div>
-    </section>
+        <!-- Card principale con banner -->
+        <div class="card admin-card">
+            <h1 class="welcome">
+                Benvenuto, <span th:text="${utente.nome}">Nome</span>!
+            </h1>
+            <p class="subtext">Gestisci il contenuto del sito in totale sicurezza.</p>
 
-    
-</main>
+            <!-- Banner informativo -->
+            <div class="info-banner">
+                <p>Qui puoi consultare e modificare libri, autori e recensioni. Scegli una delle azioni rapide di seguito o scorri per vedere i tuoi dati.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="quick-links">
+                <a th:href="@{/libri}" class="ql-card">
+                    <!--<img src="/images/book-icon.svg" alt="Libri">-->
+                    <span>Gestisci Libri</span> <br> <span>📚</span>
+                </br>
+                <a th:href="@{/autori}" class="ql-card">
+                    <!--<img src="/images/author-icon.svg" alt="Autori">-->
+                    <span>Gestisci Autori</span> <br> <span>🖋️</span>
+                </a>
+            </div>
+
+            <!-- Sezione info utente -->
+            <section class="user-info">
+                <h2>Le tue informazioni</h2>
+                <ul>
+                    <li>
+                        <strong>ID Utente:</strong>
+                        #<span th:text="${utente.id}">ID</span>
+                    </li>
+                    <li>
+                        <strong>Nome:</strong>
+                        <span th:text="${utente.nome}">Nome</span>
+                    </li>
+                    <li>
+                        <strong>Cognome:</strong>
+                        <span th:text="${utente.cognome}">Cognome</span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Logout -->
+            <form class="logout-form" th:action="@{/logout}" method="post">
+                <button type="submit" class="btn-logout">Esci</button>
+            </form>
+        </div>
+
+    </main>
+
 
 </body>
 </html>

@@ -1,144 +1,176 @@
+/* Palette colori */
 :root {
-    --bg: #f9f9f9;
-    --card-bg: #fff;
-    --text: #111;
-    --muted: #666;
-    --shadow: rgba(0, 0, 0, 0.05);
-    --radius: 14px;
+  --clr-bg: #f7f9fc;
+  --clr-card: #ffffff;
+  --clr-primary: #4a90e2;
+  --clr-primary-hover: #357abd;
+  --clr-text: #333;
+  --clr-muted: #777;
+  --radius: 8px;
+  --shadow: 0 2px 10px rgba(0,0,0,0.08);
 }
 
-body {
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(120deg, #ffffff, #ffc371);
-    min-height: 100vh;
-    color: #333;
+/* Contesto: limita tutti gli stili */
+.form-autore {
+  padding: 2rem 1rem;
+  background: var(--clr-bg);
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 2.5rem;
+/* Wrapper contenitore */
+.form-autore .wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-form {
-    max-width: 900px;
-    margin: 0 auto;
-    background-color: var(--card-bg);
-    padding: 2rem;
-    border-radius: var(--radius);
-    box-shadow: 0 4px 20px var(--shadow);
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+/* Titolo principale */
+.form-autore .page-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--clr-primary);
 }
 
-label {
-    font-weight: bold;
+/* Anteprima autore */
+.form-autore .author-preview {
+  display: grid;
+  grid-template-columns: minmax(200px, 300px) 1fr;
+  gap: 1rem;
+  background: var(--clr-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  margin-bottom: 2rem;
 }
 
-input[type="text"],
-input[type="date"],
-input[type="file"] {
-    padding: 0.5rem;
-    font-size: 1rem;
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+.form-autore .author-photo {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
-button {
-    padding: 0.7rem 1.5rem;
-    background-color: #4a90e2;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1rem;
-    margin-top: 1rem;
+.form-autore .author-info {
+  padding: 1rem 1.5rem;
 }
 
-button:hover {
-    background-color: #357abd;
+.form-autore .author-info h2 {
+  margin-top: 0;
+  font-size: 1.4rem;
+  color: var(--clr-text);
 }
 
-.grid-libri {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
+.form-autore .author-info dl {
+  margin: 0;
 }
 
-.card-libro {
-    background-color: #fff;
-    border-radius: var(--radius);
-    box-shadow: 0 4px 20px var(--shadow);
-    overflow: hidden;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    padding-bottom: 1rem;
+.form-autore .author-info dt {
+  font-weight: 600;
+  color: var(--clr-text);
 }
 
-.card-libro:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+.form-autore .author-info dd {
+  margin: 0 0 0.75rem 0;
+  color: var(--clr-muted);
 }
 
-.card-libro img {
-    width: 100%;
-    height: 240px;
-    object-fit: cover;
-    display: block;
+/* Form */
+.form-autore .author-form form {
+  background: var(--clr-card);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
 }
 
-.card-libro .content {
-    padding: 1rem;
-    text-align: center;
+/* Fieldset e legend */
+.form-autore fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
 }
 
-.card-libro input[type="checkbox"] {
-    margin-top: 0.5rem;
-    transform: scale(1.2);
+.form-autore legend {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--clr-primary);
 }
 
-
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 30px 20px;
+/* Label e input */
+.form-autore label {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  display: block;
+  color: var(--clr-text);
 }
 
-.card {
-    display: flex;
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    margin-bottom: 40px;
+.form-autore input[type="text"],
+.form-autore input[type="date"],
+.form-autore input[type="file"] {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
 }
 
-.card img {
-    width: 280px;
-    object-fit: cover;
+/* Bottone submit */
+.form-autore .btn-primary {
+  align-self: flex-start;
+  padding: 0.6rem 1.4rem;
+  background: var(--clr-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
 }
 
-.card .info {
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.form-autore .btn-primary:hover {
+  background: var(--clr-primary-hover);
 }
 
-.card h1 {
-    font-size: 28px;
-    margin-bottom: 15px;
+/* Griglia dei libri */
+.form-autore .grid-libri {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
 }
 
-.card p {
-    margin: 6px 0;
-    font-size: 16px;
+/* Card libro */
+.form-autore .card-libro {
+  background: var(--clr-card);
+  border: 1px solid #e0e0e0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
+.form-autore .card-libro:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.form-autore .card-libro img {
+  width: 100%;
+  display: block;
+  height: 200px;
+  object-fit: cover;
+}
+
+.form-autore .card-body {
+  padding: 0.6rem;
+  text-align: center;
+}
+
+.form-autore .card-body span {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--clr-text);
+}
+
+.form-autore .card-body input[type="checkbox"] {
+  transform: scale(1.2);
 }
