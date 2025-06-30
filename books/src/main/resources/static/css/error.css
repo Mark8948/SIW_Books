@@ -1,44 +1,75 @@
+/* error.css */
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background: #fff5f2;
-    margin: 0;
-    padding: 0;
-    color: #333;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #ffe3e0 0%, #fff5f2 100%);
+  margin: 0;
+  padding: 0;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.main-content {
-    max-width: 600px;
-    margin: 4rem auto;
-    text-align: center;
-    padding: 2rem;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+main.main-content {
+  flex: 1;
+  max-width: 480px;
+  margin: auto;
+  text-align: center;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+main.main-content:hover {
+  transform: translateY(-4px);
 }
 
 h1 {
-    font-size: 2.5rem;
-    color: #ff5f6d;
-    margin-bottom: 1rem;
+  font-size: 2.25rem;
+  margin-bottom: 0.5rem;
+  color: #d64550;
+}
+
+h1 small {
+  font-size: 1.25rem;
+  color: #555;
 }
 
 .description {
-    font-size: 1.2rem;
-    color: #444;
-    margin-bottom: 2rem;
+  font-size: 1rem;
+  color: #666;
+  margin: 1.5rem 0;
+  line-height: 1.5;
 }
 
 .btn-home {
-    display: inline-block;
-    padding: 0.8rem 1.6rem;
-    background-color: #ff5f6d;
-    color: white;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #d64550;
+  color: #fff;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.25s ease, transform 0.25s ease;
 }
 
-.btn-home:hover {
-    background-color: #e8414e;
+.btn-home:hover,
+.btn-home:focus {
+  background-color: #b5393f;
+  transform: scale(1.05);
+}
+
+@media (max-width: 500px) {
+  main.main-content {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+  h1 {
+    font-size: 1.75rem;
+  }
+  .description {
+    font-size: 0.95rem;
+  }
 }
