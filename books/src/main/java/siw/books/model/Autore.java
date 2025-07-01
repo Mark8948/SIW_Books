@@ -9,97 +9,98 @@ import jakarta.persistence.*;
 
 @Entity
 public class Autore {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    private String nome;
-    private String cognome;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate dataNascita;
+	private String nome;
+	private String cognome;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate dataNascita;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate dataMorte;
-    private String nazionalita;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate dataMorte;
+	private String nazionalita;
 
-    @ManyToMany(mappedBy = "autori")
-    private List<Libro> libri;
-    
-    @OneToOne(cascade = CascadeType.ALL)
-    private Immagine fotografia; 
-    public Long getId() {
-        return id;
-    }
+	@ManyToMany(mappedBy = "autori")
+	private List<Libro> libri;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	@OneToOne(cascade = CascadeType.ALL)
+	private Immagine fotografia;
 
-    public String getNome() {
-        return nome;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getCognome() {
-        return cognome;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public void setCognome(String cognome) {
-        this.cognome = cognome;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public LocalDate getDataNascita() {
-        return dataNascita;
-    }
+	public String getCognome() {
+		return cognome;
+	}
 
-    public void setDataNascita(LocalDate dataNascita) {
-        this.dataNascita = dataNascita;
-    }
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
+	}
 
-    public LocalDate getDataMorte() {
-        return dataMorte;
-    }
+	public LocalDate getDataNascita() {
+		return dataNascita;
+	}
 
-    public void setDataMorte(LocalDate dataMorte) {
-        this.dataMorte = dataMorte;
-    }
+	public void setDataNascita(LocalDate dataNascita) {
+		this.dataNascita = dataNascita;
+	}
 
-    public String getNazionalita() {
-        return nazionalita;
-    }
+	public LocalDate getDataMorte() {
+		return dataMorte;
+	}
 
-    public void setNazionalita(String nazionalita) {
-        this.nazionalita = nazionalita;
-    }
+	public void setDataMorte(LocalDate dataMorte) {
+		this.dataMorte = dataMorte;
+	}
 
-    public Immagine getFotografia() {
-        return fotografia;
-    }
+	public String getNazionalita() {
+		return nazionalita;
+	}
 
-    public void setFotografia(Immagine fotografia) {
-        this.fotografia = fotografia;
-    }
+	public void setNazionalita(String nazionalita) {
+		this.nazionalita = nazionalita;
+	}
 
-    public List<Libro> getLibri() {
-    return libri;
-}
+	public Immagine getFotografia() {
+		return fotografia;
+	}
 
-public void setLibri(List<Libro> libri) {
-    this.libri = libri;
-}
-    
-public int getMediaTotale(){
-    int media = 0;
-    int count = 0;
-    for(Libro libro : libri) {
-        if(libro.getRecensioni() != null && !libro.getRecensioni().isEmpty()) {
-                media += libro.getMediaVotiRecensioni();
-                count++;
-        }
-    }
-    return count > 0 ? media / count : 0;
-}
+	public void setFotografia(Immagine fotografia) {
+		this.fotografia = fotografia;
+	}
+
+	public List<Libro> getLibri() {
+		return libri;
+	}
+
+	public void setLibri(List<Libro> libri) {
+		this.libri = libri;
+	}
+
+	public int getMediaTotale() {
+		int media = 0;
+		int count = 0;
+		for (Libro libro : libri) {
+			if (libro.getRecensioni() != null && !libro.getRecensioni().isEmpty()) {
+				media += libro.getMediaVotiRecensioni();
+				count++;
+			}
+		}
+		return count > 0 ? media / count : 0;
+	}
 }
