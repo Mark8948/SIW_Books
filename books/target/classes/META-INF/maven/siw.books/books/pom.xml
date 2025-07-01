@@ -92,6 +92,22 @@
     </dependencies>
 
     <build>
+        <!-- Configura risorse aggiuntive per copiare immagini -->
+        <resources>
+            <!-- risorse standard -->
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <!-- immagini da includere nel jar -->
+            <resource>
+                <directory>${project.basedir}/images-to-copy</directory>
+                <targetPath>static/images/books</targetPath>
+                <includes>
+                    <include>**/*.jpg</include>
+                </includes>
+            </resource>
+        </resources>
+
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
